@@ -293,14 +293,10 @@ kubelet_config_extra_args:
 The possible vars are:
 
 * *kubelet_config_extra_args*
-* *kubelet_node_config_extra_args*
 
 Previously, the same parameters could be passed as flags to kubelet binary with the following vars:
 
 * *kubelet_custom_flags*
-* *kubelet_node_custom_flags*
-
-The `kubelet_node_custom_flags` apply kubelet settings only to nodes and not control planes. Example:
 
 ```yml
 kubelet_custom_flags:
