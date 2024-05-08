@@ -71,6 +71,8 @@ kube_apiserver_admission_event_rate_limits:
     qps: 50
     burst: 100
 kube_profiling: false
+# Remove anonymous access to cluster
+remove_anonymous_access: true
 
 ## kube-controller-manager
 kube_controller_manager_bind_address: 127.0.0.1
@@ -105,7 +107,7 @@ kubelet_systemd_hardening: true
 # IP addresses, kubelet_secure_addresses allows you
 # to specify the IP from which the kubelet
 # will receive the packets.
-kubelet_secure_addresses: "192.168.10.110 192.168.10.111 192.168.10.112"
+kubelet_secure_addresses: "localhost link-local {{ kube_pods_subnet }} 192.168.10.110 192.168.10.111 192.168.10.112"
 
 # additional configurations
 kube_owner: root
