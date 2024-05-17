@@ -1,5 +1,5 @@
 ---
-pkgs:
+os_pkgs:
   apparmor: &debian_family_base
     os:
       families:
@@ -88,6 +88,14 @@ pkgs:
   nss: *redhat_family
   openssl: {}
   python-apt: *deb_10
+  python-setuptools: &centos_python
+    os:
+      distributions:
+        CentOS:
+          major_versions:
+          - "7"
+    groups:
+    - kube_control_plane
   # TODO: not for debian 10
   python3-apt: *debian_family_base
   python3-libselinux:
@@ -98,9 +106,21 @@ pkgs:
           - "8"
           - "9"
         CentOS: *major_redhat_like
+  python3-pip: *centos_python
+  python3-venv:
+    os:
+      families:
+      - Debian
+    groups:
+    - kube_control_plane
   rsync: {}
   socat: {}
   software-properties-common: *debian_family_base
   tar: {}
   unzip: {}
   xfsprogs: {}
+
+python_pkgs:
+  kubernetes.core:
+    groups:
+    - kube_control_plane
